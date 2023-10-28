@@ -1,4 +1,6 @@
 <?php
+header('X-FRAME-OPTIONS:DENY');
+
 $pageFlag = 0;
 if(!empty($_POST['btn_confirm'])){
     $pageFlag = 1;
