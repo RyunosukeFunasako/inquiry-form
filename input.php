@@ -1,9 +1,12 @@
 <?php
 session_start();
 header('X-FRAME-OPTIONS:DENY');
+require 'validation.php';
 
 $pageFlag = 0;
-if(!empty($_POST['btn_confirm'])){
+$errors = validation($_POST);
+
+if(!empty($_POST['btn_confirm']) && empty($errors)){
     $pageFlag = 1;
 }
 if(!empty($_POST['btn_submit'])){
@@ -29,6 +32,15 @@ function h($str){
             $_SESSION['csrfToken'] = $csrfToken;
         }
         ?>
+        <?php if(!empty($errors) && !empty($_POST['btn_confirm'])) : ?>
+            <?php echo '<ul>' ;?>
+                <?php
+                foreach($errors as $error){
+                    echo '<li>' . $error . '</li>';
+                }
+                ?>
+            <?php echo '</ul>' ;?>
+        <?php endif ;?>
         <form method="POST" action="input.php">
             氏名
             <input type="text" name="your_name" value="<?php if(!empty($_POST['your_name'])){echo h($_POST['your_name']) ;} ?>">
@@ -78,7 +90,7 @@ function h($str){
             <br>
             お問い合わせ内容
             <textarea name="contact">
-                <?php if(!empty($_POST['contact'])){echo h($_POST['url']) ;}?>
+                <?php if(!empty($_POST['contact'])){echo h($_POST['contact']) ;}?>
             </textarea>
             <br>
             <input type="checkbox" name="caution" value="1">注意事項にチェック
