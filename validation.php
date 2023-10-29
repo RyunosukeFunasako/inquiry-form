@@ -19,7 +19,7 @@ function validation($request){
         $errors[] = '「年齢」は必須です。';
     }
     if(empty($request['contact']) || 200 < mb_strlen($request['contact'])){
-        $errors[] = '「お問い合わせ内容」は必須です。200文字以内で入力してください。';
+        $errors[] = '「お問い合わせ内容」は必須です。200文字以内で入力してください。'; 
     }
     if(empty($request['caution'])){
         $errors[] = '「注意事項」をご確認ください。';
