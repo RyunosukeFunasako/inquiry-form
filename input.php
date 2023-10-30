@@ -20,12 +20,10 @@ function h($str){
 
 <html lang="ja">
     <head>
-    <!-- Required meta tags -->
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>inquiry-form</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     </head>
     <body>
         <?php if($pageFlag === 0) : ?>
@@ -70,11 +68,13 @@ function h($str){
                     <input class="form-check-input" type="radio" name="gender" id="gender1" value="0"
                     <?php if(isset($_POST['gender']) && $_POST['gender'] === '0')
                     { echo 'checked' ;} ?>>
-                    <label class="form-check-label">男性</label>
+                    <label class="form-check-label" for="gender1">男性</label>
+                </div>
+                <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="gender2" value="1"
                     <?php if(isset($_POST['gender']) && $_POST['gender'] === '1')
                     { echo 'checked' ;} ?>>
-                    <label class="form-check-label">女性</label>
+                    <label class="form-check-label" for="gender2">女性</label>
                 </div>
 
                 <div class="form-group">
@@ -110,9 +110,7 @@ function h($str){
 
                 <div class="form-group">
                     <label for="contact">お問い合わせ内容</label>
-                    <textarea class="form-control" id="contact" row="3" name="contact" required>
-                    <?php if(!empty($_POST['contact'])){echo h($_POST['contact']) ;}?>
-                    </textarea>
+                    <textarea class="form-control" id="contact" rows="3" name="contact"><?php if(!empty($_POST['contact'])){echo h($_POST['contact']) ;}?></textarea>
                 </div>
                         
                 <div class="form-check">
@@ -181,10 +179,6 @@ function h($str){
                 <?php unset($_SESSION['csrfToken']); ?>
             <?php endif; ?>
         <?php endif; ?>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  </body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    </body>
 </html>
